@@ -4,11 +4,8 @@ const { spawn } = require('child_process');
 
 if (module.parent) {
   if (
-    /* Enable if an environment variable like DEPCHECKRUN=false does not exists */
-    !Object.keys(process.env).find(k => {
-      if (!k.toLowerCase().includes('depcheck')) return;
-      else return process.env[k].toLowerCase() === 'false'
-    })) {
+    /* Enable if an environment variable like DEPCHECKRUN exists */
+    Object.keys(process.env).find(k => k.toLowerCase().includes('depcheck'))) {
     console.warn(`[DepCheckRun] Enabled. Missing dependencies will be automatically installed`);
     process.on('uncaughtException', onUncaughtException);
   }
