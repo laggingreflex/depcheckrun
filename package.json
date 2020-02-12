@@ -1,6 +1,6 @@
 {
   "name": "depcheckrun",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Auto-install missing node dependencies",
   "main": "index.js",
   "bin": "index.js",
