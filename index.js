@@ -27,6 +27,8 @@ async function onUncaughtException(error, origin) {
       console.log(`[DepCheckRun] Installed: ${moduleName}`);
       console.log(`[DepCheckRun] Re-running:`, ...process.argv);
       await run(process.argv);
+    } else {
+      console.error(error);
     }
   } else {
     console.error(error);
