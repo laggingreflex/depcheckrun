@@ -20,7 +20,7 @@ async function onUncaughtException(error, origin) {
   let match;
   if (error.message && (match = error.message.match(/Cannot find module '(.*)'/))) {
     const [, moduleName] = match;
-    if (moduleName) {
+    if (moduleName && !moduleName.startsWith('.')) {
       console.warn(error.message);
       console.warn(`[DepCheckRun] Installing: ${moduleName}...`);
       await run(['npm', 'install', moduleName]);
